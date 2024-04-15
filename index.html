@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form onsubmit="event.preventDefault();">
+        <p>[enter a number between 2 and 10]</p>
+        <input type="number" id="begin">
+
+        <label for="multiplier">by</label>
+        <input type="number" name="multiplier" id="end"><br><br>
+
+        <button onclick="calculateMultiply()">click here when ready !</button>
+        
+    </form><br>
+    <div id="table"></div>
+    <p id="table"></p>
+   
+
+    <script>
+        
+        function generateTable(beginVal, endVal) {
+            var tableHTML = "<table>";
+            for (var b = 1; b <= beginVal; b++) {
+                tableHTML += "<tr>";
+                for (var a = 1; a <= endVal; a++) {
+                    tableHTML += "<td>" + (b * a) + "</td>";
+                }
+                tableHTML += "</tr>";
+            }
+            tableHTML += "</table>";
+            document.getElementById('table').innerHTML = tableHTML;
+        }
+           
+
+        function calculateMultiply(){
+            var beginVal = parseInt(document.getElementById('begin').value);
+            var endVal = parseInt(document.getElementById('end').value);
+
+            if (isNaN(beginVal) || isNaN(endVal) || beginVal < 2 || beginVal > 10 || endVal < 2 || endVal > 10)  {
+                alert('Error: Please enter a value that is between 2 to 10');        
+                return;
+                }
+                else{
+                generateTable(beginVal, endVal);
+                }
+        }
+
+      
+ 
+    </script>
+    
+</body>
+</html>
